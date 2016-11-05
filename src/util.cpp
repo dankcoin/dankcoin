@@ -1,5 +1,5 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2015 The Dankcoin Core developers
+// Copyright (c) 2009-2015 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -805,8 +805,8 @@ std::string CopyrightHolders(const std::string& strPrefix)
     if (strCopyrightHolders.find("%s") != strCopyrightHolders.npos) {
         strCopyrightHolders = strprintf(strCopyrightHolders, _(COPYRIGHT_HOLDERS_SUBSTITUTION));
     }
-    if (strCopyrightHolders.find("Dankcoin Core developers") == strCopyrightHolders.npos) {
-        strCopyrightHolders += "\n" + strPrefix + "The Dankcoin Core developers";
+    if (strCopyrightHolders.find("Bitcoin Core developers") == strCopyrightHolders.npos) {
+        strCopyrightHolders += "\n" + strPrefix + "The Bitcoin Core developers";
     }
     return strCopyrightHolders;
 }
