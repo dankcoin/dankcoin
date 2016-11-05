@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Dankcoin
+Comment=Dankcoin P2P Cryptocurrency
+Comment[fr]=Dankcoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Dankcoin, eşten eşe kriptografik sanal para birimi
+Exec=dankcoin-qt %u
+Terminal=false
+Type=Application
+Icon=dankcoin128
+MimeType=x-scheme-handler/dankcoin;
+Categories=Office;Finance;

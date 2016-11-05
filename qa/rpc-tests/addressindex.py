@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2014-2015 The Bitcoin Core developers
+# Copyright (c) 2014-2015 The Dankcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -8,13 +8,13 @@
 #
 
 import time
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import DankcoinTestFramework
 from test_framework.util import *
 from test_framework.script import *
 from test_framework.mininode import *
 import binascii
 
-class AddressIndexTest(BitcoinTestFramework):
+class AddressIndexTest(DankcoinTestFramework):
 
     def setup_chain(self):
         print("Initializing test directory "+self.options.tmpdir)

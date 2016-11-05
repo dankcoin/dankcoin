@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2015 The Bitcoin Core developers
+// Copyright (c) 2009-2015 The Dankcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_ADDRESSINDEX_H
-#define BITCOIN_ADDRESSINDEX_H
+#ifndef DANKCOIN_ADDRESSINDEX_H
+#define DANKCOIN_ADDRESSINDEX_H
 
 #include "uint256.h"
 #include "amount.h"
@@ -292,4 +292,4 @@ struct CMempoolAddressDeltaKeyCompare
     }
 };
 
-#endif // BITCOIN_ADDRESSINDEX_H
+#endif // DANKCOIN_ADDRESSINDEX_H

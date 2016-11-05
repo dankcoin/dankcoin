@@ -1,9 +1,9 @@
-// Copyright (c) 2011-2014 The Bitcoin Core developers
+// Copyright (c) 2011-2014 The Dankcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_CSVMODELWRITER_H
-#define BITCOIN_QT_CSVMODELWRITER_H
+#ifndef DANKCOIN_QT_CSVMODELWRITER_H
+#define DANKCOIN_QT_CSVMODELWRITER_H
 
 #include <QList>
 #include <QObject>
@@ -43,4 +43,4 @@ private:
     QList<Column> columns;
 };
 
-#endif // BITCOIN_QT_CSVMODELWRITER_H
+#endif // DANKCOIN_QT_CSVMODELWRITER_H

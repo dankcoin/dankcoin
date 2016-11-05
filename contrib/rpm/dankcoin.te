@@ -1,0 +1,81 @@
+policy_module(dankcoin, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type dankcoin_t;
+type dankcoin_exec_t;
+init_daemon_domain(dankcoin_t, dankcoin_exec_t)
+
+permissive dankcoin_t;
+
+type dankcoin_initrc_exec_t;
+init_script_file(dankcoin_initrc_exec_t)
+
+type dankcoin_conf_t;
+files_type(dankcoin_conf_t)
+
+type dankcoin_var_lib_t;
+files_type(dankcoin_var_lib_t)
+
+type dankcoin_var_run_t;
+files_type(dankcoin_var_run_t)
+
+type dankcoin_port_t;
+corenet_port(dankcoin_port_t)
+
+########################################
+#
+# dankcoin local policy
+#
+allow dankcoin_t self:process { fork };
+
+allow dankcoin_t self:fifo_file rw_fifo_file_perms;
+allow dankcoin_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(dankcoin_t, dankcoin_conf_t, dankcoin_conf_t)
+manage_files_pattern(dankcoin_t, dankcoin_conf_t, dankcoin_conf_t)
+
+manage_dirs_pattern(dankcoin_t, dankcoin_var_lib_t, dankcoin_var_lib_t)
+manage_files_pattern(dankcoin_t, dankcoin_var_lib_t, dankcoin_var_lib_t)
+files_var_lib_filetrans(dankcoin_t, dankcoin_var_lib_t, { dir file })
+
+manage_dirs_pattern(dankcoin_t, dankcoin_var_run_t, dankcoin_var_run_t)
+manage_files_pattern(dankcoin_t, dankcoin_var_run_t, dankcoin_var_run_t)
+
+sysnet_dns_name_resolve(dankcoin_t)
+corenet_all_recvfrom_unlabeled(dankcoin_t)
+
+allow dankcoin_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(dankcoin_t)
+corenet_tcp_sendrecv_generic_node(dankcoin_t)
+corenet_tcp_sendrecv_all_ports(dankcoin_t)
+corenet_tcp_bind_generic_node(dankcoin_t)
+
+gen_require(`
+    type dankcoin_port_t;
+')
+allow dankcoin_t dankcoin_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type dankcoin_port_t;
+')
+allow dankcoin_t dankcoin_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(dankcoin_t)
+
+files_read_etc_files(dankcoin_t)
+
+miscfiles_read_localization(dankcoin_t)
+
+sysnet_dns_name_resolve(dankcoin_t)
+
+allow dankcoin_t dankcoin_exec_t:file execute_no_trans;
+allow dankcoin_t self:process setsched;
+corecmd_exec_ls(dankcoin_t)
+corenet_tcp_connect_http_port(dankcoin_t)
+dev_read_urand(dankcoin_t)
+fs_getattr_xattr_fs(dankcoin_t)
+kernel_read_system_state(dankcoin_t)

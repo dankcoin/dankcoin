@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2015 The Bitcoin Core developers
+// Copyright (c) 2009-2015 The Dankcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_TXMEMPOOL_H
-#define BITCOIN_TXMEMPOOL_H
+#ifndef DANKCOIN_TXMEMPOOL_H
+#define DANKCOIN_TXMEMPOOL_H
 
 #include <list>
 #include <memory>
@@ -731,4 +731,4 @@ struct TxCoinAgePriorityCompare
     }
 };
 
-#endif // BITCOIN_TXMEMPOOL_H
+#endif // DANKCOIN_TXMEMPOOL_H

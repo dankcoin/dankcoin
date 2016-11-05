@@ -1,9 +1,9 @@
-// Copyright (c) 2014 The Bitcoin Core developers
+// Copyright (c) 2014 The Dankcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_CRYPTO_SHA1_H
-#define BITCOIN_CRYPTO_SHA1_H
+#ifndef DANKCOIN_CRYPTO_SHA1_H
+#define DANKCOIN_CRYPTO_SHA1_H
 
 #include <stdint.h>
 #include <stdlib.h>
@@ -25,4 +25,4 @@ public:
     CSHA1& Reset();
 };
 
-#endif // BITCOIN_CRYPTO_SHA1_H
+#endif // DANKCOIN_CRYPTO_SHA1_H

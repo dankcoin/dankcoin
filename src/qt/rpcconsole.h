@@ -1,9 +1,9 @@
-// Copyright (c) 2011-2015 The Bitcoin Core developers
+// Copyright (c) 2011-2015 The Dankcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_RPCCONSOLE_H
-#define BITCOIN_QT_RPCCONSOLE_H
+#ifndef DANKCOIN_QT_RPCCONSOLE_H
+#define DANKCOIN_QT_RPCCONSOLE_H
 
 #include "guiutil.h"
 #include "peertablemodel.h"
@@ -26,7 +26,7 @@ class QMenu;
 class QItemSelection;
 QT_END_NAMESPACE
 
-/** Local Bitcoin RPC console. */
+/** Local Dankcoin RPC console. */
 class RPCConsole: public QWidget
 {
     Q_OBJECT
@@ -142,4 +142,4 @@ private:
     QCompleter *autoCompleter;
 };
 
-#endif // BITCOIN_QT_RPCCONSOLE_H
+#endif // DANKCOIN_QT_RPCCONSOLE_H

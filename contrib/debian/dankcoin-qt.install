@@ -1,0 +1,6 @@
+usr/local/bin/dankcoin-qt usr/bin
+share/pixmaps/dankcoin32.xpm usr/share/pixmaps
+share/pixmaps/dankcoin16.xpm usr/share/pixmaps
+share/pixmaps/dankcoin128.png usr/share/pixmaps
+debian/dankcoin-qt.desktop usr/share/applications
+debian/dankcoin-qt.protocol usr/share/kde4/services/

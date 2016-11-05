@@ -1,5 +1,5 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-2015 The Bitcoin Core developers
+// Copyright (c) 2009-2015 The Dankcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -136,9 +136,9 @@ UniValue blockToDeltasJSON(const CBlock& block, const CBlockIndex* blockindex)
 
                 if (GetSpentIndex(spentKey, spentInfo)) {
                     if (spentInfo.addressType == 1) {
-                        delta.push_back(Pair("address", CBitcoinAddress(CKeyID(spentInfo.addressHash)).ToString()));
+                        delta.push_back(Pair("address", CDankcoinAddress(CKeyID(spentInfo.addressHash)).ToString()));
                     } else if (spentInfo.addressType == 2)  {
-                        delta.push_back(Pair("address", CBitcoinAddress(CScriptID(spentInfo.addressHash)).ToString()));
+                        delta.push_back(Pair("address", CDankcoinAddress(CScriptID(spentInfo.addressHash)).ToString()));
                     } else {
                         continue;
                     }
@@ -166,11 +166,11 @@ UniValue blockToDeltasJSON(const CBlock& block, const CBlockIndex* blockindex)
 
             if (out.scriptPubKey.IsPayToScriptHash()) {
                 vector<unsigned char> hashBytes(out.scriptPubKey.begin()+2, out.scriptPubKey.begin()+22);
-                delta.push_back(Pair("address", CBitcoinAddress(CScriptID(uint160(hashBytes))).ToString()));
+                delta.push_back(Pair("address", CDankcoinAddress(CScriptID(uint160(hashBytes))).ToString()));
 
             } else if (out.scriptPubKey.IsPayToPublicKeyHash()) {
                 vector<unsigned char> hashBytes(out.scriptPubKey.begin()+3, out.scriptPubKey.begin()+23);
-                delta.push_back(Pair("address", CBitcoinAddress(CKeyID(uint160(hashBytes))).ToString()));
+                delta.push_back(Pair("address", CDankcoinAddress(CKeyID(uint160(hashBytes))).ToString()));
             } else {
                 continue;
             }
@@ -935,8 +935,8 @@ UniValue gettxout(const UniValue& params, bool fHelp)
             "     \"hex\" : \"hex\",        (string) \n"
             "     \"reqSigs\" : n,          (numeric) Number of required signatures\n"
             "     \"type\" : \"pubkeyhash\", (string) The type, eg pubkeyhash\n"
-            "     \"addresses\" : [          (array of string) array of bitcoin addresses\n"
-            "        \"bitcoinaddress\"     (string) bitcoin address\n"
+            "     \"addresses\" : [          (array of string) array of dankcoin addresses\n"
+            "        \"dankcoinaddress\"     (string) dankcoin address\n"
             "        ,...\n"
             "     ]\n"
             "  },\n"

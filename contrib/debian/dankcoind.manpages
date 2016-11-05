@@ -1,0 +1,3 @@
+debian/manpages/dankcoind.1
+debian/manpages/dankcoin.conf.5
+debian/manpages/dankcoin-cli.1

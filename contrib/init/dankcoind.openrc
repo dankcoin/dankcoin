@@ -1,0 +1,92 @@
+#!/sbin/runscript
+
+# backward compatibility for existing gentoo layout 
+#
+if [ -d "/var/lib/dankcoin/.dankcoin" ]; then
+	DANKCOIND_DEFAULT_DATADIR="/var/lib/dankcoin/.dankcoin"
+else
+	DANKCOIND_DEFAULT_DATADIR="/var/lib/dankcoind"
+fi
+
+DANKCOIND_CONFIGFILE=${DANKCOIND_CONFIGFILE:-/etc/dankcoin/dankcoin.conf}
+DANKCOIND_PIDDIR=${DANKCOIND_PIDDIR:-/var/run/dankcoind}
+DANKCOIND_PIDFILE=${DANKCOIND_PIDFILE:-${DANKCOIND_PIDDIR}/dankcoind.pid}
+DANKCOIND_DATADIR=${DANKCOIND_DATADIR:-${DANKCOIND_DEFAULT_DATADIR}}
+DANKCOIND_USER=${DANKCOIND_USER:-${DANKCOIN_USER:-dankcoin}}
+DANKCOIND_GROUP=${DANKCOIND_GROUP:-dankcoin}
+DANKCOIND_BIN=${DANKCOIND_BIN:-/usr/bin/dankcoind}
+DANKCOIND_NICE=${DANKCOIND_NICE:-${NICELEVEL:-0}}
+DANKCOIND_OPTS="${DANKCOIND_OPTS:-${DANKCOIN_OPTS}}"
+
+name="Dankcoin Core Daemon"
+description="Dankcoin cryptocurrency P2P network daemon"
+
+command="/usr/bin/dankcoind"
+command_args="-pid=\"${DANKCOIND_PIDFILE}\" \
+		-conf=\"${DANKCOIND_CONFIGFILE}\" \
+		-datadir=\"${DANKCOIND_DATADIR}\" \
+		-daemon \
+		${DANKCOIND_OPTS}"
+
+required_files="${DANKCOIND_CONFIGFILE}"
+start_stop_daemon_args="-u ${DANKCOIND_USER} \
+			-N ${DANKCOIND_NICE} -w 2000"
+pidfile="${DANKCOIND_PIDFILE}"
+
+# The retry schedule to use when stopping the daemon. Could be either
+# a timeout in seconds or multiple signal/timeout pairs (like
+# "SIGKILL/180 SIGTERM/300")
+retry="${DANKCOIND_SIGTERM_TIMEOUT}"
+
+depend() {
+	need localmount net
+}
+
+# verify
+# 1) that the datadir exists and is writable (or create it)
+# 2) that a directory for the pid exists and is writable
+# 3) ownership and permissions on the config file
+start_pre() {
+	checkpath \
+	-d \
+	--mode 0750 \
+	--owner "${DANKCOIND_USER}:${DANKCOIND_GROUP}" \
+	"${DANKCOIND_DATADIR}"
+
+	checkpath \
+	-d \
+	--mode 0755 \
+	--owner "${DANKCOIND_USER}:${DANKCOIND_GROUP}" \
+	"${DANKCOIND_PIDDIR}"
+
+	checkpath -f \
+	-o ${DANKCOIND_USER}:${DANKCOIND_GROUP} \
+	-m 0660 \
+	${DANKCOIND_CONFIGFILE}
+
+	checkconfig || return 1
+}
+
+checkconfig()
+{
+	if ! grep -qs '^rpcpassword=' "${DANKCOIND_CONFIGFILE}" ; then
+		eerror ""
+		eerror "ERROR: You must set a secure rpcpassword to run dankcoind."
+		eerror "The setting must appear in ${DANKCOIND_CONFIGFILE}"
+		eerror ""
+		eerror "This password is security critical to securing wallets "
+		eerror "and must not be the same as the rpcuser setting."
+		eerror "You can generate a suitable random password using the following"
+		eerror "command from the shell:"
+		eerror ""
+		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
+		eerror ""
+		eerror "It is also recommended that you also set alertnotify so you are "
+		eerror "notified of problems:"
+		eerror ""
+		eerror "ie: alertnotify=echo %%s | mail -s \"Dankcoin Alert\"" \
+			"admin@foo.com"
+		eerror ""
+		return 1
+	fi
+}

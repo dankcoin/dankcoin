@@ -1,11 +1,11 @@
 Sample configuration files for:
 
-SystemD: bitcoind.service
-Upstart: bitcoind.conf
-OpenRC:  bitcoind.openrc
-         bitcoind.openrcconf
-CentOS:  bitcoind.init
-OS X:    org.bitcoin.bitcoind.plist
+SystemD: dankcoind.service
+Upstart: dankcoind.conf
+OpenRC:  dankcoind.openrc
+         dankcoind.openrcconf
+CentOS:  dankcoind.init
+OS X:    org.dankcoin.dankcoind.plist
 
 have been made available to assist packagers in creating node packages here.
 

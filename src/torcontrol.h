@@ -1,12 +1,12 @@
-// Copyright (c) 2015 The Bitcoin Core developers
+// Copyright (c) 2015 The Dankcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 /**
  * Functionality for communicating with Tor.
  */
-#ifndef BITCOIN_TORCONTROL_H
-#define BITCOIN_TORCONTROL_H
+#ifndef DANKCOIN_TORCONTROL_H
+#define DANKCOIN_TORCONTROL_H
 
 #include "scheduler.h"
 
@@ -17,4 +17,4 @@ void StartTorControl(boost::thread_group& threadGroup, CScheduler& scheduler);
 void InterruptTorControl();
 void StopTorControl();
 
-#endif /* BITCOIN_TORCONTROL_H */
+#endif /* DANKCOIN_TORCONTROL_H */

@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2015 The Bitcoin Core developers
+// Copyright (c) 2009-2015 The Dankcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_TIMESTAMPINDEX_H
-#define BITCOIN_TIMESTAMPINDEX_H
+#ifndef DANKCOIN_TIMESTAMPINDEX_H
+#define DANKCOIN_TIMESTAMPINDEX_H
 
 #include "uint256.h"
 
@@ -128,4 +128,4 @@ struct CTimestampBlockIndexValue {
     }
 };
 
-#endif // BITCOIN_TIMESTAMPINDEX_H
+#endif // DANKCOIN_TIMESTAMPINDEX_H
